@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-world
+  template:
+    metadata:
+      annotations:
+        it.nginx: "1.17.5"
+        file: "temp.yaml"
+      labels:
+        it-sidecar: "true"
+        app: hello-world
+    spec:
+      containers:
+      - name: hello
+        image: arieswangdocker/net-tools

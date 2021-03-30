@@ -1,0 +1,25 @@
+stages:
+  - buildbyTag
+  - build_code
+  - baseimages
+  - build_docker
+  - publish
+   
+include:
+  - project: 'devops/gitlabcicd_config'
+    ref: master
+    file: '/golang.tag.yml'
+  - project: 'devops/gitlabcicd_config'
+    ref: master
+    file: '/golang.build.yml'
+  - project: 'devops/gitlabcicd_config'
+    ref: master
+    file: '/golang.baseimages.yml'   
+  - project: 'devops/gitlabcicd_config'
+    ref: master
+    file: '/golang.docker.yml'
+  - project: 'devops/gitlabcicd_config'
+    ref: master
+    file: '/golang.it_publish.yml'
+
+
